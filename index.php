@@ -21,7 +21,7 @@ $count = mysqli_num_rows($currbal);
                 <div class="row">
                     <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
                         <div class="card card-signin my-5">
-                            <div class="card-body">
+                            <div class="card-body" style="text-align: center">
                                 <h5 class="card-title text-center">Current Balance:</h5>
                                     <div class="form-label-group">
                                         <h1>'. $_SESSION["sbal"] .'</h1>
@@ -36,5 +36,6 @@ $count = mysqli_num_rows($currbal);
     }
 
 ?>
+<title>Home | Moneygment</title>
 
 

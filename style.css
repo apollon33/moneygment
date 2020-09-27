@@ -15,3 +15,13 @@ body {
 	margin-left: 2px;
 	margin-right: 2px;
 }
+/* Brand
+--------------------------------------------- */
+.toplogo {
+    margin-top: 5px;
+}
+
+.toplogo img {
+    height : 30%;
+    width : 30%;
+}

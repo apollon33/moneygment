@@ -17,8 +17,9 @@ if(isset($_POST['login'])){
             //store data in session
             session_start();
             $_SESSION["susername"] = $username;
-            $_SESSION["spassword"] = $password;
+            $_SESSION["spassword"] = $password;            
             $_SESSION["stable"] = $usertable;
+            $_SESSION["spicture"] = $check["picture"];
             header("location: index.php");
 
             //fetch required data
@@ -27,15 +28,15 @@ if(isset($_POST['login'])){
                 $_SESSION["sbal"] = $row["bal"];
             }
         }else{
-            echo "<script>alert('Login failed: Invalid username or password.')</script>";
+            echo "Username already taken.";
         }
     }
 }
 
 ?>
-
+<title>Login | Moneygment</title>
 <div class="container pt-3">
-    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto alert alert-danger" role="alert">
+    <div class="text-center col-sm-9 col-md-7 col-lg-5 mx-auto alert alert-danger" role="alert">
         Please DO NOT share your password to anyone.
     </div>
 </div>
