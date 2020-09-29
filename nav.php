@@ -2,6 +2,7 @@
 session_start();
 include("conn.php");
 $picture = $_SESSION["spicture"];
+$username = $_SESSION["susername"];
 ?>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="index.php">Moneygment</a>
@@ -20,20 +21,27 @@ $picture = $_SESSION["spicture"];
           <a class="dropdown-item" href="withraw.php">Withraw</a>
           <a class="dropdown-item" href="transfer.php">Transfer</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="history.php">Transaction History</a>
+          <a class="dropdown-item" href="history.php"> History</a>
         </div>
       </li>
 
     </ul>
-    <div class="dropdown">
-      <button class="btn btn-outline-primary my-2 my-sm-0 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      <img src="<?php echo $picture;?>" style="width:30px; height:30px;">
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="profile.php">Profile</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item " href="logout.php">Logout</a>
+
+    <form class="form-inline my-2 my-lg-0 "method="get" action="search.php">
+      <div class="input-group ">
+        <input type="text" name="search_key" class="form-control " placeholder="Search User...">
+          <div class="input-group-prepend ">
+            <button class="input-group-text mr-sm-2" id="basic-addon1"><i class=" fa fa-search" aria-hidden="true"></i></button>
+          </div>
       </div>
-    </div>
+    </form>
+
+    
+        
+    <img class="" data-animation="true" src="<?php echo $picture;?>" width="30" height="30"  alt="" data-container="body" data-toggle="popover" data-html="true" data-placement="bottom" data-content="
+    <a href='profile.php'>Profile</a>
+    <div class='dropdown-divider'></div>
+    <a href='logout.php'>Logout</a>
+    ">
   </div>
 </nav>

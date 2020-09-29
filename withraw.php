@@ -11,6 +11,7 @@ if(!isset($_SESSION['susername']) || empty($_SESSION['spassword'])){
 
 $amount = $_POST["amount"];
 $notes = $_POST["notes"];
+$bal = $_SESSION["sbal"];
 $newbal = $_SESSION["sbal"] - $amount;
 $_SESSION["sbal"] = $newbal;
 $stable = $_SESSION["stable"];
@@ -18,17 +19,58 @@ $withraw = "WIT" . date("mdyhis");
 
 
 if(isset($_POST['withraw'])){
-    $sql = mysqli_query($conn,"INSERT INTO $stable(refno,debit,credit,bal,notes) VALUES('$withraw','$amount','0','$newbal','$notes')");    
-    echo '
+    if($amount == 0){
+        echo '
         <div class="container pt-3">
-            <div class="text-center col-sm-9 col-md-7 col-lg-5 mx-auto alert alert-danger alert-dismissible fade show" role="alert">
-                <strong>Thank you!</strong> <br>Withrawn: '.$amount.'<br> New Balance: '.$newbal.'.
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-            </div> 
-        </div>     
-    ';
+            <div class="row">
+                <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+                    <div class=" text-center alert alert-danger">
+                        Please enter valid amount.
+                    </div>
+                </div>
+            </div>
+        </div>
+        '; 
+    }else{
+        if($bal == 0){
+            echo '
+                <div class="container pt-3">
+                    <div class="row">
+                        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+                            <div class=" text-center alert alert-danger">
+                                0 Balance.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                ';
+        }elseif($bal < $amount){
+            echo '
+                <div class="container pt-3">
+                    <div class="row">
+                        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+                            <div class=" text-center alert alert-danger">
+                                <strong>Insufficient Funds.</strong> <br>Withraw: '.$amount.'<br> Available Balance: '.$bal.'.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                ';
+        }else{
+            $sql = mysqli_query($conn,"INSERT INTO $stable(refno,debit,credit,bal,notes) VALUES('$withraw','$amount','0','$newbal','$notes')");    
+            echo '
+                <div class="container pt-3">
+                    <div class="row">
+                        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+                            <div class=" text-center alert alert-danger">
+                                <strong>Thank you!</strong> <br>Withrawn: '.$amount.'<br> New Balance: '.$newbal.'.
+                            </div> 
+                        </div> 
+                    </div> 
+                </div>   
+            ';
+        }
+    }
 }
 
 ?>
@@ -42,7 +84,7 @@ if(isset($_POST['withraw'])){
 
                     <form class="form-signin" method="post" action="withraw.php">
                         <div class="form-label-group">
-                            <input type="text" id="inputAmount" class="form-control" placeholder="Amount" name="amount" required autofocus>
+                            <input type="text" id="inputAmount" class="form-control" placeholder="Amount" name="amount" value="<?php echo $amount;?>" required autofocus>
                             <label for="inputAmount">Amount</label>
                         </div>
 

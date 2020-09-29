@@ -18,17 +18,31 @@ $deposit = "DEP" . date("mdyhis");
 
 
 if(isset($_POST['deposit'])){
-    $sql = mysqli_query($conn,"INSERT INTO $stable(refno,debit,credit,bal,notes) VALUES('$deposit','0','$amount','$newbal','$notes')");    
-    echo '
+    if($amount == 0){
+        echo '
         <div class="container pt-3">
-            <div class="text-center col-sm-9 col-md-7 col-lg-5 mx-auto alert alert-success alert-dismissible fade show" role="alert">
-                <strong>Thank you!</strong> <br>Deposited: '.$amount.'<br> New Balance: '.$newbal.'.
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-            </div> 
-        </div>       
-        ';
+            <div class="row">
+                <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+                    <div class=" text-center alert alert-danger">
+                        Please enter valid amount.
+                    </div>
+                </div>
+            </div>
+        </div>
+        '; 
+    }else{
+        $sql = mysqli_query($conn,"INSERT INTO $stable(refno,debit,credit,bal,notes) VALUES('$deposit','0','$amount','$newbal','$notes')");    
+        echo '
+            <div class="container pt-3">
+                <div class="text-center col-sm-9 col-md-7 col-lg-5 mx-auto alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>Thank you!</strong> <br>Deposited: '.$amount.'<br> New Balance: '.$newbal.'.
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                </div> 
+            </div>       
+            ';
+    }
 }
 
 ?>
@@ -42,7 +56,7 @@ if(isset($_POST['deposit'])){
 
                     <form class="form-signin" method="post" action="deposit.php">
                         <div class="form-label-group">
-                            <input type="text" id="inputAmount" class="form-control" placeholder="Amount" name="amount" required autofocus>
+                            <input type="text" id="inputAmount" value="<?php echo $amount;?>" class="form-control" placeholder="Amount" name="amount" required autofocus>
                             <label for="inputAmount">Amount</label>
                         </div>
 

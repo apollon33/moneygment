@@ -13,14 +13,20 @@ $stable = $_SESSION["stable"];
 
 $sql = mysqli_query($conn, "SELECT * FROM $stable ORDER BY id DESC");
 echo "
-    <table class='table table-bordered'>
-        <tr>
-            <td align='center'><b>Ref. No.</b></td>
-            <td align='center'><b>Debit</b></td>
-            <td align='center'><b>Credit</b></td>
-            <td align='center'><b>Balance</b></td>
-            <td align='center'><b>Notes</b></td>
-        </tr>
+    <div class='container text-center pt-3 pb-3'>
+        <h5>Transaction History</h5>
+    </div>
+        <div class='container pb-3'>
+            <table id='dtBasicExample' class='table table-striped table-bordered ' >
+                <thead>
+                    <tr>
+                        <th ><b>Ref. No.</b></th>
+                        <th ><b>Debit</b></th>
+                        <th ><b>Credit</b></th>
+                        <th><b>Balance</b></th>
+                        <th ><b>Notes</b></th>
+                    </tr>
+                </thead>
     ";
 
 while($row = mysqli_fetch_assoc($sql)) {
@@ -30,19 +36,20 @@ while($row = mysqli_fetch_assoc($sql)) {
     $db_bal = $row["bal"];
     $db_notes = $row["notes"];
 echo "
-    <tr>
-        <td>$db_refno</td>
-        <td>$db_debit</td>
-        <td>$db_credit</td>
-        <td>$db_bal</td>
-        <td>$db_notes</td>
-    </tr>
+        <tr>
+            <td>$db_refno</td> 
+            <td>$db_debit</td>
+            <td>$db_credit</td>
+            <td>$db_bal</td>
+            <td>$db_notes</td>
+        </tr>
     ";
 }
 
 
 echo "
     </table>
+    </div>
     ";
 
 ?>

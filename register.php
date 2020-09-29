@@ -10,15 +10,18 @@ $usertable = "tbl" . $username;
 $refno = "REG" . date("mdyhis");
 $picture = "img/placeholder.png";
 
+echo '
+    <div class="container text-center pt-3">
+        <a href="http://www.moneygment.xyz/index.php"><img src="img/logo2.png"  style="width:10%;"></a>
+    </div>
+    ';
+
 if(isset($_POST['register'])){
     if ($username === $_POST["password"]) {
         echo '
         <div class="container pt-3">
             <div class="alert-dismissible fade show text-center col-sm-9 col-md-7 col-lg-5 mx-auto alert alert-warning" role="alert">
                 Username and Passowrd must be different.
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
             </div>
         </div>
             ';
@@ -38,9 +41,6 @@ if(isset($_POST['register'])){
                 <div class="container pt-3">
                     <div class="alert-dismissible fade show text-center col-sm-9 col-md-7 col-lg-5 mx-auto alert alert-success" role="alert">
                         Successfully Registered. <a href="login.php">Login</a>
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
                     </div>
                 </div>
                 ';
@@ -49,9 +49,6 @@ if(isset($_POST['register'])){
             <div class="container pt-3">
                 <div class="alert-dismissible fade show text-center col-sm-9 col-md-7 col-lg-5 mx-auto alert alert-danger" role="alert">
                     Username already taken.
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
                 </div>
             </div>
         ';
@@ -61,11 +58,8 @@ if(isset($_POST['register'])){
 
 ?>
 <title>Register | Moneygment</title>
-<div class="container pt-3">
-    <div class="text-center col-sm-9 col-md-7 col-lg-5 mx-auto alert alert-danger" role="alert">
-        Please DO NOT share your password to anyone.
-    </div>
-</div>
+
+
 
 <div class="container">
     <div class="row">
@@ -89,7 +83,7 @@ if(isset($_POST['register'])){
                         <a href="login.php" class="btn btn-lg btn-success btn-block text-uppercase" >Login</a>
 
                         <div class="dropdown-divider"></div>
-                        <center><p class="love">Made with <i class="icon ion-heart"></i> by <a target="_blank" href="http://fb.me/renzthegeek">Lorence</a></p></center>
+                        <p class="love text-center">Made with <i class="icon ion-heart"></i> by <a target="_blank" href="http://fb.me/renzthegeek">Lorence</a></p>
                     </form>
                 </div>
             </div>

@@ -9,37 +9,53 @@ $password = hash('sha256', $_POST['password']);
 $usertable = "tbl" . $username;
 $refno = "REG" . date("mdyhis");
 
-if(isset($_POST['login'])){
-    $sql = "SELECT * FROM tblusers WHERE username = '$username' AND pword = '$password'";
-    $result = mysqli_query($conn, $sql);
-    while ($check = mysqli_fetch_array($result)){
-        if(isset($check)){
-            //store data in session
-            session_start();
-            $_SESSION["susername"] = $username;
-            $_SESSION["spassword"] = $password;            
-            $_SESSION["stable"] = $usertable;
-            $_SESSION["spicture"] = $check["picture"];
-            header("location: index.php");
+echo '
+    <div class="container text-center pt-3">
+        <a href="http://www.moneygment.xyz/index.php"><img src="img/logo2.png"  style="width:10%;"></a>
+    </div>
+    ';
 
-            //fetch required data
-            $sqldata = mysqli_query($conn,"SELECT * FROM $usertable");
-            while($row = mysqli_fetch_assoc($sqldata)) {
-                $_SESSION["sbal"] = $row["bal"];
+if(isset($_POST['login'])){
+    $sql = mysqli_query($conn, "SELECT * FROM tblusers WHERE username = '$username' AND pword = '$password'");
+    $count = mysqli_num_rows($sql);
+    
+    if($count == 0){
+        echo '
+            <div class="container pt-3">
+                <div class="row">
+                    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+                        <div class=" text-center alert alert-danger">
+                            Invalid Email or Password
+                        </div>
+                    </div>
+                </div>
+            </div>
+            ';
+    }else{
+        while ($check = mysqli_fetch_array($sql)){
+            if(isset($check)){
+                //store data in session
+                session_start();
+                $_SESSION["susername"] = $username;
+                $_SESSION["spassword"] = $password;            
+                $_SESSION["stable"] = $usertable;
+                $_SESSION["spicture"] = $check["picture"];
+                header("location: index.php");
+    
+                //fetch required data
+                $sqldata = mysqli_query($conn,"SELECT * FROM $usertable");
+                while($row = mysqli_fetch_assoc($sqldata)) {
+                    $_SESSION["sbal"] = $row["bal"];
+                }
             }
-        }else{
-            echo "Username already taken.";
         }
     }
+
+
 }
 
 ?>
 <title>Login | Moneygment</title>
-<div class="container pt-3">
-    <div class="text-center col-sm-9 col-md-7 col-lg-5 mx-auto alert alert-danger" role="alert">
-        Please DO NOT share your password to anyone.
-    </div>
-</div>
 
 <div class="container">
     <div class="row">
@@ -58,10 +74,11 @@ if(isset($_POST['login'])){
                             <label for="inputPassword">Password</label>
                         </div>
 
+                        
                         <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" name="login">Login</button>
-                        <a href="register.php" class="btn btn-lg btn-success btn-block text-uppercase" >Register</a>
+                        <p class="text-center pt-3"><a href="register.php">Not using Moneygment? Get started today!</a></p>
                         <div class="dropdown-divider"></div>
-                        <center><p class="love">Made with <i class="icon ion-heart"></i> by <a target="_blank" href="http://fb.me/renzthegeek">Lorence</a></p></center>
+                        <p class="love text-center">Made with <i class="icon ion-heart"></i> by <a target="_blank" href="http://fb.me/renzthegeek">Lorence</a></p>
                     </form>
                 </div>
             </div>            
