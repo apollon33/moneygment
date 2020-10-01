@@ -31,7 +31,7 @@ if(isset($_POST['deposit'])){
         </div>
         '; 
     }else{
-        $sql = mysqli_query($conn,"INSERT INTO $stable(refno,debit,credit,bal,notes) VALUES('$deposit','0','$amount','$newbal','$notes')");    
+        $sql = mysqli_query($conn,"INSERT INTO $stable(refno,debit,credit,bal,notes,date_time) VALUES('$deposit','0','$amount','$newbal','$notes',now()");    
         echo '
             <div class="container pt-3">
                 <div class="text-center col-sm-9 col-md-7 col-lg-5 mx-auto alert alert-success alert-dismissible fade show" role="alert">
@@ -72,3 +72,4 @@ if(isset($_POST['deposit'])){
         </div>
     </div>
 </div>
+<?php include("footer.php");?>

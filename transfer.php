@@ -90,8 +90,8 @@ $countb = mysqli_num_rows($sqlsearch);
                     $mynewbal = $_SESSION["sbal"];
     
                     $transfertxn = "TRA" . date("mdyhis");
-                    $udpaterecipients = mysqli_query($conn,"INSERT INTO $recipients(refno,debit,credit,bal,notes) VALUES('$transfertxn','0','$amount','$recipientsnewbal','$notes')");
-                    $udpatemybal = mysqli_query($conn,"INSERT INTO $stable(refno,debit,credit,bal,notes) VALUES('$transfertxn','$amount','0','$mynewbal','$notes')");
+                    $udpaterecipients = mysqli_query($conn,"INSERT INTO $recipients(refno,debit,credit,bal,notes,date_time) VALUES('$transfertxn','0','$amount','$recipientsnewbal','$notes',now())");
+                    $udpatemybal = mysqli_query($conn,"INSERT INTO $stable(refno,debit,credit,bal,notes,date_time) VALUES('$transfertxn','$amount','0','$mynewbal','$notes',now())");
                     
                     echo '
                         <div class="container pt-3">
@@ -138,3 +138,4 @@ $countb = mysqli_num_rows($sqlsearch);
         </div>
     </div>
 </div>
+<?php include("footer.php");?>

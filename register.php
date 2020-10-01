@@ -3,9 +3,14 @@ include("noerror.php");
 include("conn.php");
 include("headers.php");
 
-$username = $password = "";
+$username = $password = $email = $fname = $lname = $account_no =  "";
 $username = $_POST['username'];
 $password = hash('sha256', $_POST['password']);
+$email = $_POST['email'];
+$fname = $_POST['fname'];
+$lname = $_POST['lname'];
+$account_no = date("mdyhis");
+$dob = $_POST['dob'];
 $usertable = "tbl" . $username;
 $refno = "REG" . date("mdyhis");
 $picture = "img/placeholder.png";
@@ -30,7 +35,7 @@ if(isset($_POST['register'])){
         $count = mysqli_num_rows($query);
         if($count == 0){
             //insert new user
-            $sql = mysqli_query($conn,"INSERT INTO tblusers (username, pword, picture) VALUES('$username', '$password', '$picture')");
+            $sql = mysqli_query($conn,"INSERT INTO tblusers (username, pword, picture, email, fname, lname, account_no, dob, date_reg) VALUES('$username', '$password', '$picture', '$email', '$lname', '$fname', '$account_no', '$dob', now())");
 
             //create user table            
             $sqlnewtable = mysqli_query($conn, "CREATE TABLE $usertable (id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY, refno VARCHAR(255) NOT NULL,debit INT(11), credit INT(11), bal INT(11), notes VARCHAR(255) NOT NULL)");
@@ -40,7 +45,7 @@ if(isset($_POST['register'])){
             echo '            
                 <div class="container pt-3">
                     <div class="alert-dismissible fade show text-center col-sm-9 col-md-7 col-lg-5 mx-auto alert alert-success" role="alert">
-                        Successfully Registered. <a href="login.php">Login</a>
+                        Successfully Registered. <br>Your Account No.: is '.$account_no.' <br><a href="login.php">Login</a>
                     </div>
                 </div>
                 ';
@@ -66,12 +71,33 @@ if(isset($_POST['register'])){
         <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
             <div class="card card-signin my-5">
                 <div class="card-body">
-                    <h5 class="card-title text-center">Moneygment Register</h5>
+                    <h5 class="card-title text-center mb-4">Create your account</h5>
 
                     <form class="form-signin" method="post" action="register.php">
                         <div class="form-label-group">
                             <input type="text" id="inputUsername" class="form-control" placeholder="Username" name="username" value="<?php echo $username;?>" required autofocus>
-                            <label for="inputEmail">Username</label>
+                            <label for="inputUsername">Username</label>
+                        </div>
+
+                        <div class="form-label-group">
+                            <input type="text" id="inputFname" class="form-control" placeholder="First" name="fname" value="<?php echo $fname;?>" required autofocus>
+                            <label for="inputFname">First</label>
+                        </div>
+
+                        <div class="form-label-group">
+                            <input type="text" id="inputLname" class="form-control" placeholder="Last" name="lname" value="<?php echo $lname;?>" required autofocus>
+                            <label for="inputLname">Last</label>
+                        </div>
+
+                        <div class="form-label-group">
+                            <input type="text" id="inputEmail" class="form-control" placeholder="Email" name="email" value="<?php echo $email;?>" required autofocus>
+                            <label for="inputEmail">Email</label>
+                        </div>
+
+                        <div class="form-label-group">
+                            <input type="text" id="inputDob" class="form-control" placeholder="MM/DD/YYYY" name="dob" value="<?php echo $dob;?>" required autofocus>
+                            <label for="inputDob">Date of birth</label><br>
+                            <label for="inputDobE" class="small text-muted">This will not be show publicly. Confirm your age.</label>
                         </div>
 
                         <div class="form-label-group">
@@ -82,8 +108,6 @@ if(isset($_POST['register'])){
                         <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit"name="register">Register</button>
                         <a href="login.php" class="btn btn-lg btn-success btn-block text-uppercase" >Login</a>
 
-                        <div class="dropdown-divider"></div>
-                        <p class="love text-center">Made with <i class="icon ion-heart"></i> by <a target="_blank" href="http://fb.me/renzthegeek">Lorence</a></p>
                     </form>
                 </div>
             </div>

@@ -5,7 +5,7 @@ $picture = $_SESSION["spicture"];
 $username = $_SESSION["susername"];
 ?>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="index.php">Moneygment</a>
+  <a class="navbar-brand" href="home.php">Moneygment</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -38,7 +38,7 @@ $username = $_SESSION["susername"];
 
     
         
-    <img class="" data-animation="true" src="<?php echo $picture;?>" width="30" height="30"  alt="" data-container="body" data-toggle="popover" data-html="true" data-placement="bottom" data-content="
+    <img class="" alt="<?php echo $username;?>" data-animation="true" src="<?php echo $picture;?>" width="30" height="30"  alt="" data-container="body" data-toggle="popover" data-html="true" data-placement="bottom" data-content="
     <a href='profile.php'>Profile</a>
     <div class='dropdown-divider'></div>
     <a href='logout.php'>Logout</a>

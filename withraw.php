@@ -57,7 +57,7 @@ if(isset($_POST['withraw'])){
                 </div>
                 ';
         }else{
-            $sql = mysqli_query($conn,"INSERT INTO $stable(refno,debit,credit,bal,notes) VALUES('$withraw','$amount','0','$newbal','$notes')");    
+            $sql = mysqli_query($conn,"INSERT INTO $stable(refno,debit,credit,bal,notes,date_time) VALUES('$withraw','$amount','0','$newbal','$notes',now())");    
             echo '
                 <div class="container pt-3">
                     <div class="row">
@@ -100,3 +100,4 @@ if(isset($_POST['withraw'])){
         </div>
     </div>
 </div>
+<?php include("footer.php");?>

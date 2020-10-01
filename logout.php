@@ -9,5 +9,5 @@ $_SESSION = array();
 session_destroy();
 
 
-exit(header("location: login.php"));
+exit(header("location: index.php"));
 ?>

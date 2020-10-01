@@ -8,10 +8,11 @@ $username = $_POST['username'];
 $password = hash('sha256', $_POST['password']);
 $usertable = "tbl" . $username;
 $refno = "REG" . date("mdyhis");
+$msg = $_GET['msg'];
 
 echo '
     <div class="container text-center pt-3">
-        <a href="http://www.moneygment.xyz/index.php"><img src="img/logo2.png"  style="width:10%;"></a>
+        <a href="http://www.moneygment.xyz/index.php"><img class="img-fluid" src="img/logo2.png"  style="width:10%;"></a>
     </div>
     ';
 
@@ -40,7 +41,14 @@ if(isset($_POST['login'])){
                 $_SESSION["spassword"] = $password;            
                 $_SESSION["stable"] = $usertable;
                 $_SESSION["spicture"] = $check["picture"];
-                header("location: index.php");
+                $_SESSION["semail"] = $check["email"];
+                $_SESSION["fname"] = $check["fname"];
+                $_SESSION["lname"] = $check["lname"];
+                $_SESSION["account_no"] = $check["account_no"];
+                $_SESSION["dob"] = $check["dob"];
+                $_SESSION["date_reg"] = $check["date_reg"];
+
+                header("location: home.php");
     
                 //fetch required data
                 $sqldata = mysqli_query($conn,"SELECT * FROM $usertable");
@@ -62,7 +70,7 @@ if(isset($_POST['login'])){
         <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
             <div class="card card-signin my-5">
                 <div class="card-body">
-                    <h5 class="card-title text-center">Moneygment Login</h5>
+                    <h5 class="card-title text-center mb-4">Login to Moneygment</h5>
                     <form class="form-signin" method="post" action="login.php">
                         <div class="form-label-group">
                             <input type="text" id="inputUsername" class="form-control" placeholder="Username" name="username" required autofocus>
@@ -76,9 +84,8 @@ if(isset($_POST['login'])){
 
                         
                         <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" name="login">Login</button>
-                        <p class="text-center pt-3"><a href="register.php">Not using Moneygment? Get started today!</a></p>
-                        <div class="dropdown-divider"></div>
-                        <p class="love text-center">Made with <i class="icon ion-heart"></i> by <a target="_blank" href="http://fb.me/renzthegeek">Lorence</a></p>
+                        <p class="text-center pt-3 small"><a href="register.php">Sign up for Moneygment</a></p>
+                        
                     </form>
                 </div>
             </div>            
