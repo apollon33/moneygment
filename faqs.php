@@ -44,6 +44,11 @@ echo '
                             -The amount is credited in real time.
                             </li>
 
+                            <li>
+                            <strong>I forgot to logout my account?</strong><br>
+                            -Don't worry. System will automatically logs you out after 15mins of inactivity.
+                            </li>
+
                         </ul>
                 </div>
             </div>
