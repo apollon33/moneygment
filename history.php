@@ -21,8 +21,8 @@ echo "
                 <thead>
                     <tr>
                         <th ><b>Ref. No.</b></th>
-                        <th ><b>Debit</b></th>
-                        <th ><b>Credit</b></th>
+                        <th ><b>Expense</b></th>
+                        <th ><b>Income</b></th>
                         <th><b>Balance</b></th>
                         <th ><b>Notes</b></th>
                         <th ><b>Date/Time</b></th>

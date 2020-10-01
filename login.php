@@ -47,6 +47,7 @@ if(isset($_POST['login'])){
                 $_SESSION["account_no"] = $check["account_no"];
                 $_SESSION["dob"] = $check["dob"];
                 $_SESSION["date_reg"] = $check["date_reg"];
+                $_SESSION["categ"] = $check["categ"];
 
                 header("location: home.php");
     

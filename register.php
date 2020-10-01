@@ -38,7 +38,7 @@ if(isset($_POST['register'])){
             $sql = mysqli_query($conn,"INSERT INTO tblusers (username, pword, picture, email, fname, lname, account_no, dob, date_reg) VALUES('$username', '$password', '$picture', '$email', '$lname', '$fname', '$account_no', '$dob', now())");
 
             //create user table            
-            $sqlnewtable = mysqli_query($conn, "CREATE TABLE $usertable (id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY, refno VARCHAR(255) NOT NULL,debit INT(11), credit INT(11), bal INT(11), notes VARCHAR(255) NOT NULL)");
+            $sqlnewtable = mysqli_query($conn, "CREATE TABLE $usertable (id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY, refno VARCHAR(255) NOT NULL,debit INT(11), credit INT(11), bal INT(11), notes VARCHAR(255) NOT NULL), date_time VARCHAR(255) NOT NULL), categ VARCHAR(255) NOT NULL)");
 
             //insert default values
             $insertvalues = mysqli_query($conn, "INSERT INTO $usertable(refno, debit, credit, bal) VALUES('$refno', 0, 0, 0,'')");

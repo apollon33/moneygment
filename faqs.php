@@ -31,7 +31,7 @@ echo '
 
                             <li>
                             <strong>What features are available in Moneygment Online?</strong><br>
-                            -Deposit/Withraw Transactions / Transfer funds to other users. / View your transaction history and more.
+                            -Income/Exprense Transactions / Transfer funds to other users. / View your transaction history and more.
                             </li><br>
 
                             <li>

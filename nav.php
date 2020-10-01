@@ -17,8 +17,8 @@ $username = $_SESSION["susername"];
           Transaction
         </a>
         <div class="dropdown-menu"  aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="deposit.php">Deposit</a>
-          <a class="dropdown-item" href="withraw.php">Withraw</a>
+          <a class="dropdown-item" href="deposit.php">Income</a>
+          <a class="dropdown-item" href="withraw.php">Expense</a>
           <a class="dropdown-item" href="transfer.php">Transfer</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="history.php"> History</a>

@@ -44,7 +44,7 @@ $sqllastthree = mysqli_query($conn,"SELECT * FROM ".$stable." ORDER BY id DESC L
     }
 
     echo '
-    <div class="container ">
+    <div class="container">
                 <div class="row">
                     <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
                         <div class="card card-signin my-5">
@@ -55,16 +55,19 @@ $sqllastthree = mysqli_query($conn,"SELECT * FROM ".$stable." ORDER BY id DESC L
                                             <td class="text-center">Transaction #</td>
                                             <td class="text-center">Notes</td>
                                             <td class="text-center">Date/Time</td>
+                                            <td class="text-center">Category</td>
     ';
     while($rowb = mysqli_fetch_assoc($sqllastthree)) {
         $db_refno = $rowb["refno"];
         $db_notes = $rowb["notes"];
         $db_datetime = $rowb["date_time"];
+        $db_categ = $rowb["categ"];
         echo '
             <tr class="small">
                 <td class="text-muted">'.$db_refno.'</td>
                 <td class="text-muted">'.$db_notes.'</td>
                 <td class="text-muted">'.$db_datetime.'</td>
+                <td class="text-muted">'.$db_categ.'</td>
             </tr>
         ';
     }
