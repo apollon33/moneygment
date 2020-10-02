@@ -4,10 +4,8 @@ include("noerror.php");
 include("conn.php");
 include("headers.php");
 include("nav.php");
+include("redirect.php");
 
-if(!isset($_SESSION['susername']) || empty($_SESSION['spassword'])){
-	header("location: login.php");
-}
 
 $amount = $_POST["amount"];
 $notes = $_POST["notes"];

@@ -4,10 +4,7 @@ include("noerror.php");
 include("conn.php");
 include("nav.php");
 include("headers.php");
-
-if(!isset($_SESSION['susername']) || empty($_SESSION['spassword'])){
-	header("location: login.php");
-}
+include("redirect.php");
 
 echo '
     <div class="container text-center pt-3">

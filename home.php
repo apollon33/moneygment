@@ -4,12 +4,10 @@ include("noerror.php");
 include("conn.php");
 include("headers.php");
 include("nav.php");
+include("redirect.php");
 
 $stable = $_SESSION["stable"];
 
-if(!isset($_SESSION['susername']) || empty($_SESSION['spassword'])){
-	header("location: login.php");
-}
 //fetching current bal
 $currbal = mysqli_query($conn, "SELECT * FROM $stable WHERE id=(SELECT max(id) FROM $stable)");
 $count = mysqli_num_rows($currbal);

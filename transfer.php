@@ -4,10 +4,7 @@ include("noerror.php");
 include("headers.php");
 include("conn.php");
 include("nav.php");
-
-if(!isset($_SESSION['susername']) || empty($_SESSION['spassword'])){
-	header("location: login.php");
-}
+include("redirect.php");
 
 $currentuser = $_SESSION['susername'];
 $bal = $_SESSION["sbal"];
