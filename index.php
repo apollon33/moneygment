@@ -8,7 +8,7 @@ include("headers.php");
             <div class="card card-signin my-5">
                 <div class="card-body text-center" >
                     <img class="img-fluid p-3" src="img/logo2.png"  style="width:40%;">
-                    <h3><p p-3>See what expenses you have right now</p></h3>
+                    <h3><p p-3>See where your expenses goes</p></h3>
 
 
                     <div class="container p-3">
