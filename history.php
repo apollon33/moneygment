@@ -14,9 +14,9 @@ echo "
         <h5>Transaction History</h5>
     </div>
         <div class='container pb-3'>
-            <table id='dtBasicExample' class='table table-striped table-bordered ' >
-                <thead>
-                    <tr>
+            <table id='dtBasicExample' class='table  table-bordered table-hover ' >
+                <thead >
+                    <tr >
                         <th ><b>Ref. No.</b></th>
                         <th ><b>Expense</b></th>
                         <th ><b>Income</b></th>

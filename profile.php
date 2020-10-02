@@ -47,7 +47,7 @@ if(isset($_POST['update'])){
                 <div class="card card-signin my-5">
                     <div class="card-body " style="text-align: center">
                         <h5 class="card-title text-center">Profile</h5>
-                        <img class="rounded-circle" src="<?php echo $picture;?>" alt="John" style="width:30%">
+                        <img class="rounded-circle img-thumbnail" src="<?php echo $picture;?>" alt="John" style="width:30%">
                         <h1 class="m-0"><?php echo $username;?></h1><br>
                         <p class="small text-muted m-0">member since: <?php echo $date_reg;?></p>
                         <div class='dropdown-divider'></div>

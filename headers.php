@@ -1,3 +1,31 @@
+<?php
+//quotes beg
+//displays random quotes
+function loadMessagesFromFile($file)
+{
+    if(!file_exists($file))
+    {
+        return false;
+    }
+
+    $fh       = fopen($file, 'r');
+    $messages = array();
+
+    while($data = fgets($fh))
+    {
+        $messages[] = $data;
+    }
+
+    fclose($fh);
+
+    return $messages;
+}
+
+$messages_from_file = loadMessagesFromFile('news.txt');
+$key = array_rand($messages_from_file);
+//quotes end
+?>
+
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> 
 <meta name="author" content="Lorence Laudenio" />
 <meta name="description" content="Monitor your cashflows.">
@@ -82,4 +110,6 @@ $(document).ready(function () {
         color: black;
     }
 </style>
+
+
 

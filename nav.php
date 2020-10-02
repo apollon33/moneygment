@@ -39,6 +39,12 @@ $username = $_SESSION["susername"];
     
         
     <img class="" alt="<?php echo $username;?>" data-animation="true" src="<?php echo $picture;?>" width="30" height="30"  alt="" data-container="body" data-toggle="popover" data-html="true" data-placement="bottom" data-content="
+    <?php
+    echo "
+      <p class='small text-muted ' >Signed in as <a class='text-decoration-none' href='profile.php'><strong>$username</strong></a></p>
+      ";
+    ?>
+    <div class='dropdown-divider'></div>
     <a href='profile.php'>Profile</a>
     <div class='dropdown-divider'></div>
     <a href='logout.php'>Logout</a>
