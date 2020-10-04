@@ -16,11 +16,12 @@ $email = $_POST["email"];
 $fname = $_POST["fname"];
 $lname = $_POST["lname"];
 $dob = $_POST["dob"];
+$status = $_POST["status"];
 
 if(isset($_POST['update'])){
     if($enterpword == $oldpword ){
         //update user    
-        $sql = mysqli_query($conn, "UPDATE tblusers SET fname='$fname', lname='$lname',  picture='$picture', dob='$dob', email='$email' WHERE username = '$username'");
+        $sql = mysqli_query($conn, "UPDATE tblusers SET fname='$fname', lname='$lname',  picture='$picture', dob='$dob', email='$email', status='$status' WHERE username = '$username'");
         echo '
                 <div class="container pt-3">
                     <div class="row">
@@ -62,6 +63,12 @@ if(isset($_POST['update'])){
                         <h5 class="card-title text-center">Profile</h5>
                         <img class="rounded-circle img-thumbnail" src="<?php echo $_SESSION["spicture"];?>" alt="John" style="width:30%">
                         <h1 class="m-0"><?php echo $username;?></h1><br>
+                        <div class="form-label-group">
+                            <select name="status" class="form-control">
+                                <option value="Busy" <?php if ($_SESSION["sstatus"] == 'Busy') echo ' selected="selected"'; ?>>Busy</option>
+                                <option value="Available" <?php if ($_SESSION["sstatus"] == 'Available') echo ' selected="selected"'; ?>>Available</option>
+                            </select>
+                        </div>
                         <p class="small text-muted m-0">member since: <?php echo $_SESSION["sdate_reg"];?></p>
                         <div class='dropdown-divider'></div>
                         <h5 class="bg-success rounded">Account No.: <strong><?php echo $_SESSION["saccount_no"];?></strong></h5>
@@ -89,11 +96,13 @@ if(isset($_POST['update'])){
                             <input class="form-control" type="text" name="email" value="<?php echo $_SESSION["semail"];?>"> 
                             <label for="inputEmail">Email</label>
                         </div>
+
+                        
                         
                         <div class="dropdown-divider"></div>
 
                         <div class="form-label-group" >                   
-                            <input class="form-control" type="text" name="enterpword" placeholder="Enter current password"> 
+                            <input class="form-control" type="password" name="enterpword" placeholder="Enter current password"> 
                             <label for="inputenterpword">Current Password</label>
                         </div>
 

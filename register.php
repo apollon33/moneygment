@@ -14,6 +14,7 @@ $dob = $_POST['dob'];
 $usertable = "tbl" . $username;
 $refno = "REG" . date("mdyhis");
 $picture = "img/placeholder.png";
+$stat = "Busy";
 
 echo '
     <div class="container text-center pt-3">
@@ -35,13 +36,13 @@ if(isset($_POST['register'])){
         $count = mysqli_num_rows($query);
         if($count == 0){
             //insert new user
-            $sql = mysqli_query($conn,"INSERT INTO tblusers (username, pword, picture, email, fname, lname, account_no, dob, date_reg) VALUES('$username', '$password', '$picture', '$email', '$lname', '$fname', '$account_no', '$dob', now())");
+            $sql = mysqli_query($conn,"INSERT INTO tblusers (username, pword, picture, email, fname, lname, account_no, dob, date_reg, stat) VALUES('$username', '$password', '$picture', '$email', '$fname', '$lname', '$account_no', '$dob', now(), '$stat')");
 
             //create user table            
-            $sqlnewtable = mysqli_query($conn, "CREATE TABLE $usertable (id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY, refno VARCHAR(255) NOT NULL,debit INT(11), credit INT(11), bal INT(11), notes VARCHAR(255) NOT NULL), date_time VARCHAR(255) NOT NULL), categ VARCHAR(255) NOT NULL)");
+            $sqlnewtable = mysqli_query($conn, "CREATE TABLE $usertable (id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY, refno VARCHAR(255) NOT NULL,debit INT(11), credit INT(11), bal INT(11), notes VARCHAR(255) NOT NULL, date_time VARCHAR(255) NOT NULL, categ VARCHAR(255) NOT NULL, stat VARCHAR(255) NOT NULL)");
 
             //insert default values
-            $insertvalues = mysqli_query($conn, "INSERT INTO $usertable(refno, debit, credit, bal) VALUES('$refno', 0, 0, 0,'')");
+            $insertvalues = mysqli_query($conn, "INSERT INTO $usertable(refno, debit, credit, bal, notes, date_time, categ, stat) VALUES('$refno', 0, 0, 0,'', now(), '', '$stat'");
             echo '            
                 <div class="container pt-3">
                     <div class="alert-dismissible fade show text-center col-sm-9 col-md-7 col-lg-5 mx-auto alert alert-success" role="alert">

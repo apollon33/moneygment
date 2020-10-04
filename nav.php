@@ -3,6 +3,7 @@ session_start();
 include("conn.php");
 $picture = $_SESSION["spicture"];
 $username = $_SESSION["susername"];
+$stat = $_SESSION["sstat"];
 ?>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="home.php">Moneygment</a>
@@ -42,6 +43,7 @@ $username = $_SESSION["susername"];
     <?php
     echo "
       <p class='small text-muted ' >Signed in as <a class='text-decoration-none' href='profile.php'><strong>$username</strong></a></p>
+      <p class='small text-muted ' >Status: <strong>$stat</strong></a></p>
       ";
     ?>
     <div class='dropdown-divider'></div>
