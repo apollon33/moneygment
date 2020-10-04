@@ -2,9 +2,9 @@
 session_start();
 include("noerror.php");
 include("conn.php");
-include("nav.php");
 include("headers.php");
-include("redirect.php");
+include("nonav.php");
+
 
 echo '
     <div class="container text-center pt-3">

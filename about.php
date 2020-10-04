@@ -2,9 +2,8 @@
 session_start();
 include("noerror.php");
 include("conn.php");
-include("nav.php");
 include("headers.php");
-include("redirect.php");
+include("nonav.php");
 
 
 echo '

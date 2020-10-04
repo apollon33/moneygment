@@ -11,7 +11,10 @@ $search_key = $_GET['search_key'];
 $sql = mysqli_query($conn,"SELECT * FROM tblusers WHERE (`username` LIKE '%".$search_key."%')");
 $count = mysqli_num_rows($sql);
 
-echo "<div class='container p-3'>";
+echo "    
+    <div class='container p-3'>
+    <div class='container font-weight-bold'>Results for '".$search_key."'</div>
+    ";
 if($search_key == null){
     echo "Please enter search key";
 }else{
@@ -21,17 +24,14 @@ if($search_key == null){
         while($search_results = mysqli_fetch_assoc($sql)){
             echo "
             <form method='get' action='transfer.php'>
-                <div class='container'>
-                    <div class='row'>
-                        <div class='col'>
-                            <img  src=".$search_results['picture']." style='width:10%'>
-                            <h3>".$search_results['username']."</h3>
-                            <a href='transfer.php?search_key=".$search_results['username']."' class='btn btn btn-success btn-block text-uppercase' >Transfer</a>         
-                            <div class='dropdown-divider'></div>               
-                        </div>                    
-                    </div>                
+                <div class='media  border-bottom border-top border-warning m-2 p-2 text-white bg-dark'>
+                    <img class='align-self-center mr-3 img-thumbnail ' style='width:10%;' src=".$search_results['picture']." alt='Generic placeholder image'>
+                    <div class='media-body'>
+                        <h5 class='mt-0'>".$search_results['username']."</h5>
+                        <p>Details here.</p>
+                        <p class='mb-0'><a href='transfer.php?search_key=".$search_results['username']."' class='btn btn btn-success  text-uppercase' >Transfer</a> </p>
+                    </div>
                 </div>
-            </div>
             
 
             

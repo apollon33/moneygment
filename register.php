@@ -17,7 +17,7 @@ $picture = "img/placeholder.png";
 
 echo '
     <div class="container text-center pt-3">
-        <a href="http://www.moneygment.xyz/index.php"><img src="img/logo2.png"  style="width:10%;"></a>
+        <a href="http://www.moneygment.xyz/index.php"><img class="img-fluid max-width: 100%; height: auto;" src="img/logo2.png"  style="width:10%;"></a>
     </div>
     ';
 
@@ -75,7 +75,7 @@ if(isset($_POST['register'])){
 
                     <form class="form-signin" method="post" action="register.php">
                         <div class="form-label-group">
-                            <input type="text" id="inputUsername" class="form-control" placeholder="Username" name="username" value="<?php echo $username;?>" required autofocus>
+                            <input type="text" id="inputUsername"  class="form-control" placeholder="Username" name="username" value="<?php echo $username;?>" required autofocus>
                             <label for="inputUsername">Username</label>
                         </div>
 

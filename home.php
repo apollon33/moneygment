@@ -11,7 +11,7 @@ $stable = $_SESSION["stable"];
 <title>Home | Moneygment</title>
 
 <div class="container">
-    <div class="container text-center border border-dark p-3 mb-2 mt-3">
+    <div class="container text-center border border-dark p-3 mb-2 mt-3 rounded">
         <div class="row">
             <div class="col-sm">                
                 <strong class="lead "><?php echo ucfirst($messages_from_file[$key]);?></strong>
@@ -20,20 +20,20 @@ $stable = $_SESSION["stable"];
         </div>
     </div>
 
-    <div class="container text-center  p-3  ">
-        <div class="row">
-                <div class="col-sm bg-success p-3  border border-dark">
+    <div class="container text-center  p-0  ">
+        <div class="row p-3">
+                <div class="col-sm bg-success p-3  border border-dark rounded">
                     <h5 class="card-title text-center">Current Balance:</h5>
                     <h1 ><strong><?php echo $_SESSION["sbal"];?></strong></h1>
                     <p class="text-right small  mb-0">as of <?php echo $_SESSION["sdatetime"];?></p>
                 </div>
 
+                <div class="col">
             
-                <div class="col-sm bg-warning p-3 border border-dark">
+                <div class="col-sm bg-warning p-3 border border-dark rounded col-auto">
                     <table class="table table-bordered  table-striped table-hover  ">
                         <tr class="table-primary">
                             <td class="text-center">Transaction #</td>
-                            <td class="text-center">Notes</td>
                             <td class="text-center">Date/Time</td>
                             <td class="text-center">Category</td>
                         </tr>
@@ -43,13 +43,11 @@ $stable = $_SESSION["stable"];
                             $sqllastthree = mysqli_query($conn,"SELECT * FROM ".$stable." ORDER BY id DESC LIMIT 3");
                             while($rowb = mysqli_fetch_assoc($sqllastthree)) {
                                 $db_refno = $rowb["refno"];
-                                $db_notes = $rowb["notes"];
                                 $db_datetime = $rowb["date_time"];
                                 $db_categ = $rowb["categ"];
                                 echo '
                                     <tr class="small">
                                         <td class="text-muted">'.$db_refno.'</td>
-                                        <td class="text-muted">'.$db_notes.'</td>
                                         <td class="text-muted">'.$db_datetime.'</td>
                                         <td class="text-muted">'.$db_categ.'</td>
                                     </tr>                            
@@ -61,7 +59,6 @@ $stable = $_SESSION["stable"];
                 </div>
         </div>
     </div>
-
 
 
 <?php include("footer.php");?>

@@ -12,7 +12,7 @@ $msg = $_GET['msg'];
 
 echo '
     <div class="container text-center pt-3">
-        <a href="http://www.moneygment.xyz/index.php"><img class="img-fluid" src="img/logo2.png"  style="width:10%;"></a>
+        <a href="http://www.moneygment.xyz/index.php"><img class="img-fluid max-width: 100%; height: auto;" src="img/logo2.png"  style="width:10%;"></a>
     </div>
     ';
 
@@ -42,21 +42,22 @@ if(isset($_POST['login'])){
                 $_SESSION["stable"] = $usertable;
                 $_SESSION["spicture"] = $check["picture"];
                 $_SESSION["semail"] = $check["email"];
-                $_SESSION["fname"] = $check["fname"];
-                $_SESSION["lname"] = $check["lname"];
-                $_SESSION["account_no"] = $check["account_no"];
-                $_SESSION["dob"] = $check["dob"];
-                $_SESSION["date_reg"] = $check["date_reg"];
-                $_SESSION["categ"] = $check["categ"];
+                $_SESSION["sfname"] = $check["fname"];
+                $_SESSION["slname"] = $check["lname"];
+                $_SESSION["saccount_no"] = $check["account_no"];
+                $_SESSION["sdob"] = $check["dob"];
+                $_SESSION["sdate_reg"] = $check["date_reg"];
+                $_SESSION["scateg"] = $check["categ"];
 
                 header("location: home.php");
-    
-                //fetch required data
-                $sqldata = mysqli_query($conn,"SELECT * FROM $usertable");
-                while($row = mysqli_fetch_assoc($sqldata)) {
-                    $_SESSION["sbal"] = $row["bal"];
-                }
             }
+        }
+
+        //fetch required data
+        $currbal = mysqli_query($conn, "SELECT * FROM $usertable WHERE id=(SELECT max(id) FROM $usertable)");
+        while($row = mysqli_fetch_array($currbal)){
+            $_SESSION["sbal"] = $row['bal'];
+            $_SESSION["sdatetime"] = $row['date_time'];
         }
     }
 

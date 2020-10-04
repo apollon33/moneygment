@@ -3,6 +3,7 @@
         <div class="row">
             <div class="col footer-copyright text-left py-3">
                 <small>
+					<a class="text-reset" href="contactus.php">Contact Us</a>&nbsp;
                     <a class="text-reset" href="privacy.php">Privacy</a>&nbsp;
                     <a class="text-reset" href="faqs.php">FAQs</a>&nbsp;
                     <a class="text-reset" href="about.php">About</a>
