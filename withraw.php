@@ -61,7 +61,7 @@ if(isset($_POST['withraw'])){
                     <div class="row">
                         <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
                             <div class=" text-center alert alert-danger">
-                                <strong>Thank you!</strong> <br>Spent: '.$amount.' for '.$categ.'<br> New Balance: '.$newbal.'.
+                                <strong>Thank you!</strong> <br>Youve spent: '.$amount.' for '.$categ.'<br> New Balance: '.$newbal.'.
                             </div> 
                         </div> 
                     </div> 
@@ -101,7 +101,7 @@ if(isset($_POST['withraw'])){
                             <label for="inputNotes">Notes</label>
                         </div>
 
-                        <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" name="withraw">Submit</button>
+                        <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" name="withraw">Add</button>
                     </form>
                 </div>
             </div>

@@ -10,6 +10,7 @@ include("redirect.php");
 
 $picture = $_POST["picture"];
 $oldpword = $_SESSION["spassword"];
+$username = $_SESSION["susername"];
 $enterpword = hash('sha256', $_POST["enterpword"]);
 $picture = $_POST["picture"];
 $email = $_POST["email"];
@@ -17,11 +18,24 @@ $fname = $_POST["fname"];
 $lname = $_POST["lname"];
 $dob = $_POST["dob"];
 $status = $_POST["status"];
+$newpic = "img/" .$username . ".jpg";
+$usertable = $_SESSION["stable"];
+
+$refno = "RES" . date("mdyhis");
+
 
 if(isset($_POST['update'])){
     if($enterpword == $oldpword ){
         //update user    
-        $sql = mysqli_query($conn, "UPDATE tblusers SET fname='$fname', lname='$lname',  picture='$picture', dob='$dob', email='$email', status='$status' WHERE username = '$username'");
+        $sql = mysqli_query($conn, "UPDATE tblusers SET fname='$fname', lname='$lname',  picture='$newpic', dob='$dob', email='$email', stat='$status' WHERE username = '$username'");
+
+        //new data
+        $_SESSION["spicture"] = $picture;
+        $_SESSION["semail"] = $email;
+        $_SESSION["sfname"] = $fname;
+        $_SESSION["slname"] = $lname;
+        $_SESSION["sdob"] = $dob;
+        $_SESSION["sstat"] = $stat;
         echo '
                 <div class="container pt-3">
                     <div class="row">
@@ -61,15 +75,16 @@ if(isset($_POST['update'])){
                 <div class="card card-signin my-5">
                     <div class="card-body " style="text-align: center">
                         <h5 class="card-title text-center">Profile</h5>
-                        <img class="rounded-circle img-thumbnail" src="<?php echo $_SESSION["spicture"];?>" alt="John" style="width:30%">
+                        <img  class="rounded-circle img-thumbnail" src="<?php echo $_SESSION["spicture"];?>" alt="John" style="width:30%">
+                        
                         <h1 class="m-0"><?php echo $username;?></h1><br>
                         <div class="form-label-group">
                             <select name="status" class="form-control">
-                                <option value="Busy" <?php if ($_SESSION["sstatus"] == 'Busy') echo ' selected="selected"'; ?>>Busy</option>
-                                <option value="Available" <?php if ($_SESSION["sstatus"] == 'Available') echo ' selected="selected"'; ?>>Available</option>
+                                <option value="Busy" <?php if ($_SESSION["sstat"] == 'Busy') echo ' selected="selected"'; ?>>Busy</option>
+                                <option value="Available" <?php if ($_SESSION["sstat"] == 'Available') echo ' selected="selected"'; ?>>Available</option>
                             </select>
                         </div>
-                        <p class="small text-muted m-0">member since: <?php echo $_SESSION["sdate_reg"];?></p>
+                        <span class="small text-muted m-0">Member since: <?php echo $_SESSION["sdate_reg"];?></span>&nbsp;<span class="small text-muted m-0">Last login: <?php echo $_SESSION["slastlogin"];?></span>
                         <div class='dropdown-divider'></div>
                         <h5 class="bg-success rounded">Account No.: <strong><?php echo $_SESSION["saccount_no"];?></strong></h5>
                         <div class="form-label-group" >
@@ -109,7 +124,6 @@ if(isset($_POST['update'])){
                         <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" name="update">Update</button>
                         <div class="dropdown-divider"></div>
                         <div class="container">
-                            <a class="btn btn-lg btn-danger btn-block text-uppercase" href="#">Delete Account</a>
                             <p class="small text-muted">If you would like to delete your account please contact us through the contact form on the Dashboard page of your account.
 Please note that deleted accounts can not be restored.</p>
                         </div>
@@ -119,4 +133,10 @@ Please note that deleted accounts can not be restored.</p>
         </div>
     </div>
 </form>
+
+<div class="container">
+                            <form action="profile.php" method="post">
+                                
+                            </form>
+                        </div>
 <?php include("footer.php");?>

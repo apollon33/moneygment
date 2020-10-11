@@ -28,7 +28,7 @@ if($search_key == null){
                     <img class='align-self-center mr-3 img-thumbnail ' style='width:10%;' src=".$search_results['picture']." alt='Generic placeholder image'>
                     <div class='media-body'>
                         <h5 class='mt-0'>".$search_results['username']."</h5>
-                        <p class='small'>Status: ".$_SESSION["sstat"]."</p>
+                        <p class='small'>Status: <span class='text-danger'>".$_SESSION["sstat"]."</span></p>
                         <p>Details here.</p>                        
                         <p class='mb-0'><a href='transfer.php?search_key=".$search_results['username']."' class='btn btn btn-success  text-uppercase' >Transfer</a> </p>
                     </div>

@@ -34,7 +34,7 @@ if(isset($_POST['deposit'])){
         echo '
             <div class="container pt-3">
                 <div class="text-center col-sm-9 col-md-7 col-lg-5 mx-auto alert alert-success alert-dismissible fade show" role="alert">
-                    <strong>Thank you!</strong> <br>Deposited: '.$amount.' from '.$categ.'<br> New Balance: '.$newbal.'.
+                    <strong>Thank you!</strong> <br>Youve added '.$amount.' from '.$categ.'<br> New Balance: '.$newbal.'.
                 </div> 
             </div>       
             ';
@@ -69,7 +69,7 @@ if(isset($_POST['deposit'])){
                             <label for="inputNotes">Notes</label>
                         </div>
 
-                        <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" name="deposit">Submit</button>
+                        <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" name="deposit">Add</button>
                     </form>
                 </div>
             </div>

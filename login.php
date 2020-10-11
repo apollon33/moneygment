@@ -26,7 +26,8 @@ if(isset($_POST['login'])){
                 <div class="row">
                     <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
                         <div class=" text-center alert alert-danger">
-                            Invalid Email or Password
+                            <i class="fa fa-times-circle fa-3x"></i>
+                            <p>Invalid Email or Password</p>
                         </div>
                     </div>
                 </div>
@@ -49,6 +50,7 @@ if(isset($_POST['login'])){
                 $_SESSION["sdate_reg"] = $check["date_reg"];
                 $_SESSION["scateg"] = $check["categ"];
                 $_SESSION["sstat"] = $check["stat"];
+                $_SESSION["slastlogin"] = $check["lastlogin"];
 
                 header("location: home.php");
             }
@@ -60,6 +62,14 @@ if(isset($_POST['login'])){
             $_SESSION["sbal"] = $row['bal'];
             $_SESSION["sdatetime"] = $row['date_time'];
         }
+
+        $gettotalcredit = mysqli_query($conn, "SELECT sum(credit) as tcredit FROM $usertable");
+        $row= mysqli_fetch_array($gettotalcredit);
+        $_SESSION["stcredit"] = $row['tcredit'];
+
+        $gettotaldebit = mysqli_query($conn, "SELECT sum(debit) as tdebit FROM $usertable");
+        $row= mysqli_fetch_array($gettotaldebit);
+        $_SESSION["stdebit"] = $row['tdebit'];
     }
 
 
@@ -68,10 +78,10 @@ if(isset($_POST['login'])){
 ?>
 <title>Login | Moneygment</title>
 
-<div class="container">
+<div class="container p-3">
     <div class="row">
         <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-            <div class="card card-signin my-5">
+            <div class="card card-signin">
                 <div class="card-body">
                     <h5 class="card-title text-center mb-4">Login to Moneygment</h5>
                     <form class="form-signin" method="post" action="login.php">

@@ -19,7 +19,7 @@ echo '
         <div class="mx-auto">
             <div class="my-5">
                 <div class="card-body" >
-                    <h5 class="card-title text-center">Frequently Asked Questions</h5>
+                    <h5 class="card-title text-center">All you need to know. At one place.</h5>
                         <ul>
                             <li>
                             <strong>What is Moneygment?</strong><br>
@@ -38,7 +38,7 @@ echo '
 
                             <li>
                             <strong>What features are available in Moneygment Online?</strong><br>
-                            -Income/Exprense and Transfer funds transactions to other users. View your transaction history and more.
+                            -Add Income/Exprense. View recent records and more.
                             </li><br>
 
                             <li>
@@ -46,10 +46,6 @@ echo '
                             -Click on picture > Profile. Fillin the details to be updated and enter your current password then click 'Update'.
                             </li><br>
 
-                            <li>
-                            <strong>When will the amount be credited to others user's account?</strong><br>
-                            -The amount is credited in real time.
-                            </li><br>
 
                             <li>
                             <strong>I forgot to logout my account?</strong><br>
