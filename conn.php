@@ -1,5 +1,5 @@
 <?php
-
+date_default_timezone_set('Asia/Manila');
 // Create connection
 $conn = new mysqli("localhost","root","1234","db_rencebank");
 //$conn = new mysqli("localhost","id14971600_admin","09272020Ldl@","id14971600_rencebnk");

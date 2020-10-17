@@ -23,7 +23,7 @@ if(isset($_POST['withraw'])){
             <div class="row">
                 <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
                     <div class=" text-center alert alert-danger">
-                        Please enter valid amount.
+                        <i class="fa fa-ban"></i> Please enter valid amount.
                     </div>
                 </div>
             </div>
@@ -36,7 +36,7 @@ if(isset($_POST['withraw'])){
                     <div class="row">
                         <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
                             <div class=" text-center alert alert-danger">
-                                0 Balance.
+                                <i class="fa fa-ban"></i> 0 Balance.
                             </div>
                         </div>
                     </div>
@@ -47,8 +47,8 @@ if(isset($_POST['withraw'])){
                 <div class="container pt-3">
                     <div class="row">
                         <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-                            <div class=" text-center alert alert-danger">
-                                <strong>Insufficient Funds.</strong> <br>Spent: '.$amount.' for '.$categ.'<br> Available Balance: '.$bal.'.
+                            <div class=" text-center alert alert-warning">
+                                <i class="fa fa-ban"></i> Insufficient Funds. Available Balance is '.$bal.'.
                             </div>
                         </div>
                     </div>
@@ -61,26 +61,29 @@ if(isset($_POST['withraw'])){
                     <div class="row">
                         <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
                             <div class=" text-center alert alert-danger">
-                                <strong>Thank you!</strong> <br>Youve spent: '.$amount.' for '.$categ.'<br> New Balance: '.$newbal.'.
+                                <i class="fa fa-check-circle"></i> Youve spent: '.$amount.' for '.$categ.'. New Balance: '.$newbal.'.
                             </div> 
                         </div> 
                     </div> 
                 </div>   
             ';
+            include("refresh_bal.php");
         }
     }
 }
 
 ?>
 <title>Withraw | Moneygment</title>
-<div class="container">
+<div class="container p-3">
     <div class="row">
         <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-            <div class="card card-signin my-5">
+            <div class="card card-signin">
                 <div class="card-body">
                     <h5 class="card-title text-center">Expense</h5>
+                    <div class='dropdown-divider'></div>
+                    <p class=" rounded small text-center text-muted">The cost required for something; the money spent on something.</p>
 
-                    <form class="form-signin" method="post" action="withraw.php">
+                    <form class="form-signin was-validated" method="post" action="withraw.php">
                         <div class="form-label-group">
                             <input type="text" id="inputAmount" class="form-control" placeholder="Amount" name="amount" value="<?php echo $amount;?>" required autofocus>
                             <label for="inputAmount">Amount</label>

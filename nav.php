@@ -37,9 +37,11 @@ $stat = $_SESSION["sstat"];
         </a>
         <div class="dropdown-menu"  aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="loancalc.php"><i class="fa fa-calculator"></i> Loan Calculator</a>
+          <a class="dropdown-item" href="percent.php"><i class="fa fa-percent"></i> Percent</a>
           <!--<a class="dropdown-item" href="chat.php" ><i class="fa fa-comments"></i> Chat</a>-->
         </div>
       </li>
+
 
       
 

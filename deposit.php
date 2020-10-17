@@ -1,4 +1,5 @@
 <?php
+//date_default_timezone_set('Asia/Manila');
 session_start();
 include("noerror.php");
 include("conn.php");
@@ -19,38 +20,37 @@ $deposit = "DEP" . date("mdyhis");
 if(isset($_POST['deposit'])){
     if($amount == 0){
         echo '
-        <div class="container pt-3">
-            <div class="row">
-                <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-                    <div class=" text-center alert alert-danger">
-                        Please enter valid amount.
-                    </div>
-                </div>
+        <div class="container p-3">
+            <div class="text-center col-sm-9 col-md-7 col-lg-5 mx-auto alert alert-danger alert-dismissible fade show" role="alert"">
+                <i class="fa fa-ban"></i> Please enter a valid amount.
             </div>
         </div>
         '; 
     }else{
         $sql = mysqli_query($conn,"INSERT INTO $stable(refno,debit,credit,bal,notes,date_time,categ) VALUES('$deposit','0','$amount','$newbal','$notes',now(),'$categ')");    
         echo '
-            <div class="container pt-3">
+            <div class="container p-3">
                 <div class="text-center col-sm-9 col-md-7 col-lg-5 mx-auto alert alert-success alert-dismissible fade show" role="alert">
-                    <strong>Thank you!</strong> <br>Youve added '.$amount.' from '.$categ.'<br> New Balance: '.$newbal.'.
+                    <i class="fa fa-check-circle"></i> Youve added '.$amount.' from '.$categ.' New Balance: '.$newbal.'.
                 </div> 
             </div>       
             ';
+        include("refresh_bal.php");
     }
 }
 
 ?>
 <title>Income | Moneygment</title>
-<div class="container">
+<div class="container p-3">
     <div class="row">
         <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-            <div class="card card-signin my-5">
+            <div class="card card-signin">
                 <div class="card-body">
                     <h5 class="card-title text-center">Income</h5>
+                    <div class='dropdown-divider'></div>
+                    <p class="text-muted small text-center">Money received, especially on a regular basis, for work or through investments.</p>
 
-                    <form class="form-signin" method="post" action="deposit.php">
+                    <form class="form-signin was-validated" method="post" action="deposit.php">
                         <div class="form-label-group">
                             <input type="text" id="inputAmount" value="<?php echo $amount;?>" class="form-control" placeholder="Amount" name="amount" required autofocus>
                             <label for="inputAmount">Amount</label>

@@ -31,6 +31,7 @@ $key = array_rand($messages_from_file);
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+<link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
 
 <!-- JS, Popper.js, and jQuery -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -55,12 +56,12 @@ $key = array_rand($messages_from_file);
     </ul>
 
     
-    <a class="btn btn-outline-primary " href="login.php">Login</a>
-    &nbsp;
-    <a class=" btn btn-primary text-white" href="register.php">Signup</a>
+    <a class="btn btn-outline-primary mr-2" href="login.php"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a>    
+    <a class=" btn btn-primary text-white" href="register.php"><i class="fa fa-user-plus" aria-hidden="true"></i> Signup</a>
     </div>
 </nav>
 <title>Join. Monitor. Save. | Moneygment</title>
+
 
 
 
@@ -69,7 +70,7 @@ $key = array_rand($messages_from_file);
     <div class="row bg-success p-3 align-items-center">        
         <div class="container col-sm ">
             <img src="img/brand.png" width="50" height="50" alt=""> <h1 style="display:inline" class="text-white">Moneygment</h1>
-            <h3 class=" text-white p-2">Your Partner in Finances</h3>
+            <h3 class=" text-white p-3">We’ll help you reach your savings goals.</h3>
             <a href="register.php" class="btn btn-light text-success p-3">Try it for FREE!</a>
         </div>
 
@@ -103,9 +104,9 @@ $key = array_rand($messages_from_file);
 
     <div class="row bg-primary align-items-center">        
         <div class="container col-sm  p-3">
-            <h4 class=" text-white">Money saved is Money Earned.</h4>
+            <h4 class=" text-white">For a BETTER Life</h4>
             <p class="p-5 text-white">
-                <strong class="lead "><?php echo ucfirst($messages_from_file[$key]);?></strong>
+                <strong class="lead "><i class="fa fa-quote-left" aria-hidden="true"></i> <?php echo ucfirst($messages_from_file[$key]);?> <i class="fa fa-quote-right" aria-hidden="true"></i></strong>
             </p>
         </div>
         <div class="container col-sm ">

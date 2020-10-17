@@ -1,4 +1,3 @@
-
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> 
 <meta name="author" content="Lorence Laudenio" />
@@ -13,7 +12,8 @@
 <!-- Heart -->
 <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="icon" type="image/png" href="img/logo.png">
+<!--<link rel="icon" type="image/png" href="img/logo.png">-->
+<link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
 <!-- Load icon library -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -82,6 +82,8 @@ function toggleAddform() {
   }
 }
 </script>
+
+
 </head>
 
 

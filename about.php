@@ -20,6 +20,7 @@ echo '
             <div class="card card-signin my-5">
                 <div class="card-body" >
                     <h5 class="card-title text-center">About <strong>Moneygment</strong></h5>
+                    <div class='dropdown-divider'></div>
                     <p class="text-justify">
                         "Money Saved is Money Earned". Moneygment's mission is to teach people of all ages how financial systems work, and how to take advantage of these systems to save big money. Everyone could use more money, but in reality there are only two basic ways to increase your cash flow: increase your income or decrease your spending.
                     </p>

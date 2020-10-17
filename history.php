@@ -10,8 +10,12 @@ $stable = $_SESSION["stable"];
 
 $sql = mysqli_query($conn, "SELECT * FROM $stable ORDER BY id DESC");
 echo "
+    <center>
+    <div class='container bg-white rounded shadow p-3 m-3'>
     <div class='container text-center pt-3 pb-3'>
         <h5>Transaction History</h5>
+        <div class='dropdown-divider'></div>
+        <p class='text-muted small'>You can get a transaction history from your online activity.</p>
     </div>
         <div class='container pb-3'>
             <table id='dtBasicExample' class='table  table-bordered table-hover ' >
@@ -50,6 +54,8 @@ echo "
 echo "
     </table>
     </div>
+    </div>
+    </center>
     ";
 
 ?>

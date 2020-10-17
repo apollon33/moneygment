@@ -51,25 +51,15 @@ if(isset($_POST['login'])){
                 $_SESSION["scateg"] = $check["categ"];
                 $_SESSION["sstat"] = $check["stat"];
                 $_SESSION["slastlogin"] = $check["lastlogin"];
-
+                $_SESSION["slastchanged"] = $check["lastchanged"];
+                $_SESSION["sgender"] = $check["gender"];
+                include("saveip.php");
                 header("location: home.php");
             }
         }
 
-        //fetch required data
-        $currbal = mysqli_query($conn, "SELECT * FROM $usertable WHERE id=(SELECT max(id) FROM $usertable)");
-        while($row = mysqli_fetch_array($currbal)){
-            $_SESSION["sbal"] = $row['bal'];
-            $_SESSION["sdatetime"] = $row['date_time'];
-        }
-
-        $gettotalcredit = mysqli_query($conn, "SELECT sum(credit) as tcredit FROM $usertable");
-        $row= mysqli_fetch_array($gettotalcredit);
-        $_SESSION["stcredit"] = $row['tcredit'];
-
-        $gettotaldebit = mysqli_query($conn, "SELECT sum(debit) as tdebit FROM $usertable");
-        $row= mysqli_fetch_array($gettotaldebit);
-        $_SESSION["stdebit"] = $row['tdebit'];
+        include("refresh_bal.php");
+        
     }
 
 
@@ -84,6 +74,7 @@ if(isset($_POST['login'])){
             <div class="card card-signin">
                 <div class="card-body">
                     <h5 class="card-title text-center mb-4">Login to Moneygment</h5>
+                    <div class='dropdown-divider'></div>
                     <form class="form-signin" method="post" action="login.php">
                         <div class="form-label-group">
                             <input type="text" id="inputUsername" class="form-control" placeholder="Username" name="username" required autofocus>

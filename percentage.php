@@ -18,6 +18,7 @@ $topay = $amount + $interest;
 <div class="container">
     <div class="container text-center border border-dark p-3 mb-2 mt-3 rounded">
     Loan Calculator
+    <div class='dropdown-divider'></div>
         <div class="row">
             <div class="col-sm">     
                 

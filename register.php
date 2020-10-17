@@ -64,18 +64,21 @@ if(isset($_POST['register'])){
                 </div>
             </div>
             ';
-    }else{
+    }else{        
+        
         $query = mysqli_query($conn,"SELECT * FROM tblusers WHERE username='$username'");
         $count = mysqli_num_rows($query);
         if($count == 0){
             //insert new user
-            $sql = mysqli_query($conn,"INSERT INTO tblusers (username, pword, picture, email, fname, lname, account_no, dob, date_reg, stat, lastlogin) VALUES('$username', '$password', '$picture', '$email', '$fname', '$lname', '$account_no', '$dob', CURRENT_TIMESTAMP, '$stat', CURRENT_TIMESTAMP)");
+            $sql = mysqli_query($conn,"INSERT INTO tblusers (username, pword, picture, email, fname, lname, account_no, dob, date_reg, stat, lastlogin, ip, gender, lastchanged) VALUES('$username', '$password', '$picture', '$email', '$fname', '$lname', '$account_no', '$dob', CURRENT_TIMESTAMP, '$stat', CURRENT_TIMESTAMP, '', '', '')");
         
             //create user table            
-            $sqlnewtable = mysqli_query($conn, "CREATE TABLE $usertable (id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY, refno VARCHAR(255) NOT NULL,debit INT(11), credit INT(11), bal INT(11), notes VARCHAR(255) NOT NULL, date_time VARCHAR(255) NOT NULL, categ VARCHAR(255) NOT NULL, stat VARCHAR(255) NOT NULL)");
+            $sqlnewtable = mysqli_query($conn, "CREATE TABLE $usertable (id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY, refno VARCHAR(255) NOT NULL,debit INT(11), credit INT(11), bal INT(11), notes VARCHAR(255) NOT NULL, date_time VARCHAR(255) NOT NULL, categ VARCHAR(255) NOT NULL)");
         
             //insert default values
-            $insertvalues = mysqli_query($conn, "INSERT INTO $usertable(refno, debit, credit, bal, notes, date_time, categ, stat) VALUES('$refno', 0, 0, 0,'', now(), '', '$stat'");
+            $insertvalues = mysqli_query($conn, "INSERT INTO $usertable(refno, debit, credit, bal, notes, date_time, categ) VALUES('$refno', 0, 0, 0,'', CURRENT_TIMESTAMP, '')");
+            include("saveip.php");
+            
             echo '
                 <div class="container pt-3">
                     <div class="row">
@@ -109,7 +112,8 @@ if(isset($_POST['register'])){
 
 <div class="container bg-white p-2 mb-3 rounded">
     <h5 class="text-center p-3">Create an account</h5>
-    <form class="form-signin p-3" method="post" action="register.php">
+    <div class='dropdown-divider'></div>
+    <form class="form-signin p-3 was-validated" method="post" action="register.php">
         <div class="container">
             <p class="small">Please fill in this form to create an account. It's free and only takes a minute.</p>
             <div class="row">
@@ -130,7 +134,7 @@ if(isset($_POST['register'])){
                             </small>
                         </div>
                     </div>
-
+                    
                     <div class="col-sm">
                         <div class="form-label-group">
                             <input type="text" id="inputFname" class="form-control " placeholder="First" name="fname" value="<?php echo $fname;?>" required autofocus>
