@@ -56,7 +56,7 @@ $topay = $amount + $interest;
                             </div>
 
                             
-                            <button class="btn  btn-primary btn-block text-uppercase" type="submit" name="">Compute</button>
+                            <button class="rounded-pill btn  btn-primary btn-block text-uppercase" type="submit" name="">Compute</button>
                             
                         </form>           
                     </div>

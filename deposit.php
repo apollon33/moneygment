@@ -6,6 +6,7 @@ include("conn.php");
 include("headers.php");
 include("nav.php");
 include("redirect.php");
+include("quotes.php");
 
 
 $amount = $_POST["amount"];
@@ -20,20 +21,16 @@ $deposit = "DEP" . date("mdyhis");
 if(isset($_POST['deposit'])){
     if($amount == 0){
         echo '
-        <div class="container p-3">
-            <div class="text-center col-sm-9 col-md-7 col-lg-5 mx-auto alert alert-danger alert-dismissible fade show" role="alert"">
+            <div style="position: fixed; bottom: 8px; left: 16px; z-index: 1;" class=" toast toast-body" data-autohide="true" data-delay="10000">
                 <i class="fa fa-ban"></i> Please enter a valid amount.
             </div>
-        </div>
         '; 
     }else{
         $sql = mysqli_query($conn,"INSERT INTO $stable(refno,debit,credit,bal,notes,date_time,categ) VALUES('$deposit','0','$amount','$newbal','$notes',now(),'$categ')");    
         echo '
-            <div class="container p-3">
-                <div class="text-center col-sm-9 col-md-7 col-lg-5 mx-auto alert alert-success alert-dismissible fade show" role="alert">
-                    <i class="fa fa-check-circle"></i> Youve added '.$amount.' from '.$categ.' New Balance: '.$newbal.'.
-                </div> 
-            </div>       
+            <div style="position: fixed; bottom: 8px; left: 16px; z-index: 1;" class=" toast toast-body" data-autohide="true" data-delay="10000">
+                <i class="fa fa-check-circle"></i> Youve added '.$amount.' from '.$categ.'
+            </div>
             ';
         include("refresh_bal.php");
     }
@@ -69,7 +66,7 @@ if(isset($_POST['deposit'])){
                             <label for="inputNotes">Notes</label>
                         </div>
 
-                        <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" name="deposit">Add</button>
+                        <button class="rounded-pill btn btn-lg btn-primary btn-block text-uppercase" type="submit" name="deposit">Add</button>
                     </form>
                 </div>
             </div>

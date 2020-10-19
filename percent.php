@@ -45,7 +45,7 @@ if(isset($_POST['btnPercent'])){
                     <label for="formGroupExampleInput">Part</label>
                     <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Part" name="part" value="<?php echo $part;?>" readonly>
                 </div>
-                <button name="btnPart" type="submit" class="btn btn-primary">Compute</button> 
+                <button name="btnPart" type="submit" class="rounded-pill btn btn-primary">Compute</button> 
                 </form>
             </div>
 
@@ -68,7 +68,7 @@ if(isset($_POST['btnPercent'])){
                     <label for="formGroupExampleInput">Percent</label>
                     <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Percent" name="percentb" value="<?php echo $percentb;?>" readonly>
                 </div>
-                <button name="btnPercent" type="submit" class="btn btn-primary">Compute</button> 
+                <button name="btnPercent" type="submit" class="rounded-pill btn btn-primary">Compute</button> 
                 </form>
             </div>
         </div>        

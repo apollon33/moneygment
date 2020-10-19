@@ -19,53 +19,29 @@ $withraw = "WIT" . date("mdyhis");
 if(isset($_POST['withraw'])){
     if($amount == 0){
         echo '
-        <div class="container pt-3">
-            <div class="row">
-                <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-                    <div class=" text-center alert alert-danger">
-                        <i class="fa fa-ban"></i> Please enter valid amount.
-                    </div>
-                </div>
+            <div style="position: fixed; bottom: 8px; left: 16px; z-index: 1;" class=" toast toast-body" data-autohide="true" data-delay="10000">
+                <i class="fa fa-ban"></i> Please enter valid amount.
             </div>
-        </div>
         '; 
     }else{
         if($bal == 0){
             echo '
-                <div class="container pt-3">
-                    <div class="row">
-                        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-                            <div class=" text-center alert alert-danger">
-                                <i class="fa fa-ban"></i> 0 Balance.
-                            </div>
-                        </div>
-                    </div>
+                <div style="position: fixed; bottom: 8px; left: 16px; z-index: 1;" class=" toast toast-body" data-autohide="true" data-delay="10000">
+                    <i class="fa fa-ban"></i> 0 Balance.
                 </div>
                 ';
         }elseif($bal < $amount){
             echo '
-                <div class="container pt-3">
-                    <div class="row">
-                        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-                            <div class=" text-center alert alert-warning">
-                                <i class="fa fa-ban"></i> Insufficient Funds. Available Balance is '.$bal.'.
-                            </div>
-                        </div>
-                    </div>
+                <div style="position: fixed; bottom: 8px; left: 16px; z-index: 1;" class=" toast toast-body" data-autohide="true" data-delay="10000">
+                    <i class="fa fa-ban"></i> Insufficient Funds.
                 </div>
                 ';
         }else{
             $sql = mysqli_query($conn,"INSERT INTO $stable(refno,debit,credit,bal,notes,date_time,categ) VALUES('$withraw','$amount','0','$newbal','$notes',now(),'$categ')");    
             echo '
-                <div class="container pt-3">
-                    <div class="row">
-                        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-                            <div class=" text-center alert alert-danger">
-                                <i class="fa fa-check-circle"></i> Youve spent: '.$amount.' for '.$categ.'. New Balance: '.$newbal.'.
-                            </div> 
-                        </div> 
-                    </div> 
-                </div>   
+                <div style="position: fixed; bottom: 8px; left: 16px; z-index: 1;" class=" toast toast-body" data-autohide="true" data-delay="10000">
+                    <i class="fa fa-check-circle"></i> Youve spent: '.$amount.' for '.$categ.'
+                </div>
             ';
             include("refresh_bal.php");
         }
@@ -104,7 +80,7 @@ if(isset($_POST['withraw'])){
                             <label for="inputNotes">Notes</label>
                         </div>
 
-                        <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" name="withraw">Add</button>
+                        <button class="rounded-pill btn btn-lg btn-primary btn-block text-uppercase" type="submit" name="withraw">Add</button>
                     </form>
                 </div>
             </div>

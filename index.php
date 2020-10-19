@@ -1,37 +1,12 @@
 <?php
-//quotes beg
-//displays random quotes
-function loadMessagesFromFile($file)
-{
-    if(!file_exists($file))
-    {
-        return false;
-    }
-
-    $fh       = fopen($file, 'r');
-    $messages = array();
-
-    while($data = fgets($fh))
-    {
-        $messages[] = $data;
-    }
-
-    fclose($fh);
-
-    return $messages;
-}
-
-$messages_from_file = loadMessagesFromFile('news.txt');
-$key = array_rand($messages_from_file);
-//quotes end
-
+include("quotes.php");
 ?>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> 
 <!-- Load icon library -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-<link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
+<link rel="shortcut icon" href="img/brand.png" type="image/x-icon">
 
 <!-- JS, Popper.js, and jQuery -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -56,8 +31,8 @@ $key = array_rand($messages_from_file);
     </ul>
 
     
-    <a class="btn btn-outline-primary mr-2" href="login.php"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a>    
-    <a class=" btn btn-primary text-white" href="register.php"><i class="fa fa-user-plus" aria-hidden="true"></i> Signup</a>
+    <a class="btn btn-outline-primary mr-2 rounded-pill" href="login.php"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a>    
+    <a class=" btn btn-primary text-white rounded-pill" href="register.php"><i class="fa fa-user-plus" aria-hidden="true"></i> Signup</a>
     </div>
 </nav>
 <title>Join. Monitor. Save. | Moneygment</title>
@@ -69,13 +44,49 @@ $key = array_rand($messages_from_file);
 <div class="container-fluid text-center  ">
     <div class="row bg-success p-3 align-items-center">        
         <div class="container col-sm ">
-            <img src="img/brand.png" width="50" height="50" alt=""> <h1 style="display:inline" class="text-white">Moneygment</h1>
-            <h3 class=" text-white p-3">We’ll help you reach your savings goals.</h3>
+            <img class="" src="img/brand.png" width="50" height="50" alt=""> <h1 style="display:inline" class="text-white">Moneygment</h1>
+            <h3 class=" text-white p-3">We’ll help you reach your financial goals.</h3>
             <a href="register.php" class="btn btn-light text-success p-3">Try it for FREE!</a>
         </div>
 
-        <div class="col-sm    ">
-            <img class="img-fluid maxwidth: 100%; height: auto;" src="img/monitor.png" >
+        <div class="col-sm  pt-2  ">
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                <img class="img-fluid  d-block w-100 " src="img/computer-repair-and-support-for-businesses-in-and-around-warsaw-indiana-2508x1672 (1).jpg" alt="First slide">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5 class="bg-success">Wake up with less worries</h5>
+                </div>
+                </div>
+                <div class="carousel-item">
+                <img class="img-fluid  d-block w-100 " src="img/Happy-Family.jpg" alt="Second slide">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5 class="bg-primary">Stay Young, Happy and Financially Free</h5>
+                </div>
+                </div>                
+                <div class="carousel-item">
+                <img class="img-fluid  d-block w-100 " src="img/arms+wide+open.jpg" alt="Third slide">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5 class="bg-warning">Keep on living worry free with Moneygment</h5>
+                </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+
+
             <p class=" text-white">Join. Monitor. Save.</p>
         </div>
     </div>

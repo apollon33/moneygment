@@ -7,11 +7,11 @@ $fname = $_SESSION["sfname"];
 $lname = $_SESSION["slname"];
 $stat = $_SESSION["sstat"];
 ?>
-<nav class="navbar navbar-expand-md navbar-light bg-light">
+<nav class="navbar navbar-expand-md navbar-light bg-light py-0">
   <a class="navbar-brand" href="home.php">
     <img src="img/brand.png" width="30" height="30" alt="">
   </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler py-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
@@ -22,8 +22,8 @@ $stat = $_SESSION["sstat"];
           Add
         </a>
         <div class="dropdown-menu"  aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="deposit.php"><i class="fa fa-plus-square"></i> Income</a>
-          <a class="dropdown-item" href="withraw.php"><i class="fa fa-minus-square"></i> Expense</a>
+          <a class="dropdown-item" href="deposit.php"><i class="fa fa-plus-square mr-2"></i>Income</a>
+          <a class="dropdown-item" href="withraw.php"><i class="fa fa-minus-square mr-2"></i>Expense</a>
           <!--<a class="dropdown-item" href="transfer.php"><i class="fa fa-paper-plane"></i> Transfer</a>-->
       </li>
 
@@ -36,8 +36,8 @@ $stat = $_SESSION["sstat"];
           Tools
         </a>
         <div class="dropdown-menu"  aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="loancalc.php"><i class="fa fa-calculator"></i> Loan Calculator</a>
-          <a class="dropdown-item" href="percent.php"><i class="fa fa-percent"></i> Percent</a>
+          <a class="dropdown-item" href="loancalc.php"><i class="fa fa-calculator mr-2"></i>Loan Calculator</a>
+          <a class="dropdown-item" href="percent.php"><i class="fa fa-percent mr-2"></i>Percent</a>
           <!--<a class="dropdown-item" href="chat.php" ><i class="fa fa-comments"></i> Chat</a>-->
         </div>
       </li>
@@ -62,11 +62,11 @@ $stat = $_SESSION["sstat"];
     <ul class="navbar-nav ">
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <img class="rounded-circle  border border-secondary" alt="<?php echo $username;?>" src="<?php echo $picture;?>" width="30" height="30"> <?php echo ucwords($fname . " ". $lname);?>
+          <img class="rounded-circle  border border-secondary" alt="<?php echo $username;?>" src="<?php echo $picture;?>" width="30" height="30"> <?php echo ucwords($fname);?>
         </a>
         <div class="dropdown-menu"  aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="profile.php"><i class="fa fa-user" aria-hidden="true"></i> Profile</a>
-          <a class="dropdown-item" href="logout.php"><i class="fa fa-sign-out"></i> Logout</a>
+          <a class="dropdown-item" href="profile.php"><i class="fa fa-user mr-2" aria-hidden="true"></i>Profile</a>
+          <a class="dropdown-item" href="logout.php"><i class="fa fa-sign-out mr-2"></i>Logout</a>
         </div>
       </li>
     </ul>

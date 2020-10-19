@@ -22,42 +22,24 @@ if(isset($_POST['login'])){
     
     if($count == 0){
         echo '
-            <div class="container pt-3">
-                <div class="row">
-                    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-                        <div class=" text-center alert alert-danger">
-                            <i class="fa fa-times-circle fa-3x"></i>
-                            <p>Invalid Email or Password</p>
-                        </div>
-                    </div>
-                </div>
+            <div style="position: fixed; bottom: 8px; left: 16px; z-index: 1;" class=" toast toast-body" data-autohide="true" data-delay="10000">
+                <i class="fa fa-times"></i> That is an incorrect username / password combination.
             </div>
             ';
     }else{
-        while ($check = mysqli_fetch_array($sql)){
-            if(isset($check)){
-                //store data in session
-                session_start();
-                $_SESSION["susername"] = $username;
-                $_SESSION["spassword"] = $password;            
-                $_SESSION["stable"] = $usertable;
-                $_SESSION["spicture"] = $check["picture"];
-                $_SESSION["semail"] = $check["email"];
-                $_SESSION["sfname"] = $check["fname"];
-                $_SESSION["slname"] = $check["lname"];
-                $_SESSION["saccount_no"] = $check["account_no"];
-                $_SESSION["sdob"] = $check["dob"];
-                $_SESSION["sdate_reg"] = $check["date_reg"];
-                $_SESSION["scateg"] = $check["categ"];
-                $_SESSION["sstat"] = $check["stat"];
-                $_SESSION["slastlogin"] = $check["lastlogin"];
-                $_SESSION["slastchanged"] = $check["lastchanged"];
-                $_SESSION["sgender"] = $check["gender"];
-                include("saveip.php");
-                header("location: home.php");
-            }
-        }
+        echo '
+            <div style="position: fixed; bottom: 8px; left: 16px; z-index: 1;" class=" toast toast-body" data-autohide="true" data-delay="10000">
+                <i class="fa fa-check-circle"></i> Success! Please wait for redirection...
+            </div>
 
+            <script> 
+                window.setTimeout(function(){
+                window.location.href = "home.php";
+                }, 3000);
+            </script>
+            ';
+        include("refresh_data.php");
+        //header("location: home.php");
         include("refresh_bal.php");
         
     }
@@ -73,21 +55,21 @@ if(isset($_POST['login'])){
         <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
             <div class="card card-signin">
                 <div class="card-body">
-                    <h5 class="card-title text-center mb-4">Login to Moneygment</h5>
+                    <h5 class="card-title text-center mb-2">Welcome back!</h5>
                     <div class='dropdown-divider'></div>
-                    <form class="form-signin" method="post" action="login.php">
+                    <form class="form-signin pt-2" method="post" action="login.php">
                         <div class="form-label-group">
-                            <input type="text" id="inputUsername" class="form-control" placeholder="Username" name="username" required autofocus>
                             <label for="inputEmail">Username</label>
+                            <input type="text" id="inputUsername" class="form-control" placeholder="Username" name="username" required autofocus>
                         </div>
 
-                        <div class="form-label-group">
-                            <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required>
+                        <div class="form-label-group pb-3 pt-3">
                             <label for="inputPassword">Password</label>
+                            <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required>
                         </div>
 
                         
-                        <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" name="login">Login</button>
+                        <button class="btn btn-lg btn-primary btn-block text-uppercase rounded-pill" type="submit" name="login">Login</button>
                         <p class="text-center pt-3 small"><a href="register.php">Sign up for Moneygment</a></p>
                         
                     </form>
